@@ -1,0 +1,175 @@
+
+<!DOCTYPE html>
+<html lang class="loading">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>EasySegmentedControl定时显示样式使用说明 - wsj_2012</title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate">
+    <meta name="keywords" content="Fechin,"> 
+    <meta name="description" content="EasySegmentedControl是HMSegmentedControl的swift版本，两个库的实现细节及实现方式是一致的，鉴于里面有很多属性参数的设置，第一次使用此库的人对有的参数使用不是,"> 
+    <meta name="author" content="wsj_2012"> 
+    <link rel="alternative" href="atom.xml" title="wsj_2012" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+    <link rel="stylesheet" href="/css/diaspora.css">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+              google_ad_client: "ca-pub-8691406134231910",
+              enable_page_level_ads: true
+         });
+    </script>
+    <script async custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
+</head>
+</html>
+<body class="loading">
+    <span id="config-title" style="display:none">wsj_2012</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="icon-home image-icon" href="javascript:;" data-url="http://www.huweihuang.com"></a>
+    <div title="播放/暂停" class="icon-play"></div>
+    <h3 class="subtitle">EasySegmentedControl定时显示样式使用说明</h3>
+    <div class="social">
+        <!--<div class="like-icon">-->
+            <!--<a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+        <!--</div>-->
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class="main">
+        <h1 class="title">EasySegmentedControl定时显示样式使用说明</h1>
+        <div class="stuff">
+            <span>三月 28, 2019</span>
+            
+  <ul class="post-tags-list"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/App/">App</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/Swift/">Swift</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/UI/">UI</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/iOS/">iOS</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <p><a href="https://github.com/wsj2012/EasySegmentedControl" target="_blank" rel="noopener">EasySegmentedControl</a>是<a href="https://github.com/HeshamMegid/HMSegmentedControl" target="_blank" rel="noopener">HMSegmentedControl</a>的swift版本，两个库的实现细节及实现方式是一致的，鉴于里面有很多属性参数的设置，第一次使用此库的人对有的参数使用不是很明白，各参数使用对定制样式实际作用不会很熟悉，故写此文，可以更好的帮助你使用此第三方库，灵活地定制出自己想要的样式。此文提供五种样式Demo，可在此五种样式上灵活调整参数，以定制出不同样式的分段控制器。</p>
+<h4 id="接入方式可选择如下方式中的一种："><a href="#接入方式可选择如下方式中的一种：" class="headerlink" title="接入方式可选择如下方式中的一种："></a>接入方式可选择如下方式中的一种：</h4><ul>
+<li>pod ‘EasySegmentedControl’  </li>
+<li>将EasySegmentedControl.swift文件导入自己的工程</li>
+</ul>
+<h1 id="Demo①"><a href="#Demo①" class="headerlink" title="Demo①"></a>Demo①</h1><h4 id="Style1："><a href="#Style1：" class="headerlink" title="Style1："></a>Style1：</h4><ul>
+<li>效果图</li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/3603263-5085471db33101c6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="ScreenShot1.png"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">let viewWidth = view.frame.size.width</span><br><span class="line">      let sc = EasySegmentedControl.init(with: [&quot;Trending&quot;, &quot;News&quot;, &quot;Library&quot;])</span><br><span class="line">      sc.frame = CGRect(x: 0, y: 88, width: viewWidth, height: 40)</span><br><span class="line">      sc.autoresizingMask = [.flexibleRightMargin, .flexibleWidth]</span><br><span class="line">      sc.backgroundsColor = UIColor.clear</span><br><span class="line">      sc.addTarget(self, action: #selector(segmentedControlChangedValue(segmentedControl:)), for: .valueChanged)</span><br><span class="line">      view.addSubview(sc)</span><br></pre></td></tr></table></figure>
+<h1 id="Demo②"><a href="#Demo②" class="headerlink" title="Demo②"></a>Demo②</h1><h4 id="Style2："><a href="#Style2：" class="headerlink" title="Style2："></a>Style2：</h4><p><img src="https://upload-images.jianshu.io/upload_images/3603263-165d665c8cf9e44f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="ScreenShot2.png"></p>
+<p>Code:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">let sc1 = EasySegmentedControl.init(with: [&quot;One&quot;, &quot;Two&quot;, &quot;Three&quot;, &quot;Four&quot;, &quot;Five&quot;, &quot;Six&quot;, &quot;Seven&quot;, &quot;Eight&quot;])</span><br><span class="line">      sc1.autoresizingMask = [.flexibleRightMargin, .flexibleWidth]</span><br><span class="line">      sc1.frame = CGRect(x: 0, y: 60 + 68, width: viewWidth, height: 40)</span><br><span class="line">      sc1.segmentEdgeInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)</span><br><span class="line">      sc1.selectionStyle = .FullWidthStripe</span><br><span class="line">      sc1.selectionIndicatorLocation = .Down</span><br><span class="line">      sc1.verticalDividerEnabled = true</span><br><span class="line">      sc1.verticalDividerColor = .black</span><br><span class="line">      sc1.verticalDividerWidth = 1.0</span><br><span class="line">      sc1.titleFormatter = &#123;(seg, title, index, selected) in</span><br><span class="line">          let attString = NSAttributedString.init(string: title, attributes: [NSAttributedString.Key.foregroundColor : UIColor.blue])</span><br><span class="line">          return attString</span><br><span class="line">      &#125;</span><br><span class="line">      sc1.addTarget(self, action: #selector(segmentedControlChangedValue(segmentedControl:)), for: .valueChanged)</span><br><span class="line">      view.addSubview(sc1)</span><br></pre></td></tr></table></figure>
+<h1 id="Demo③"><a href="#Demo③" class="headerlink" title="Demo③"></a>Demo③</h1><h4 id="Style3："><a href="#Style3：" class="headerlink" title="Style3："></a>Style3：</h4><p><img src="https://upload-images.jianshu.io/upload_images/3603263-116ae38162eb3de2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="ScreenShot3.png"></p>
+<p>Code:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">sc1.addTarget(self, action: #selector(segmentedControlChangedValue(segmentedControl:)), for: .valueChanged)</span><br><span class="line">view.addSubview(sc1)</span><br><span class="line"></span><br><span class="line">// Segmented control with images</span><br><span class="line">let images: [UIImage] = [UIImage(named: &quot;1&quot;)!, UIImage(named: &quot;2&quot;)!, UIImage(named: &quot;3&quot;)!, UIImage(named: &quot;4&quot;)!]</span><br><span class="line">let selectedImages: [UIImage] = [UIImage(named: &quot;1-selected&quot;)!, UIImage(named: &quot;2-selected&quot;)!, UIImage(named: &quot;3-selected&quot;)!, UIImage(named: &quot;4-selected&quot;)!]</span><br><span class="line">let titles: [String] = [&quot;1&quot;, &quot;2&quot;, &quot;3&quot;, &quot;4&quot;]</span><br><span class="line">let sc2 = EasySegmentedControl.init(with: images, sectionSelectedImages: selectedImages, sectiontitles: titles)</span><br><span class="line">sc2.imagePosition = .LeftOfText</span><br><span class="line">sc2.frame = CGRect(x: 0, y: 120 + 68, width: viewWidth, height: 50)</span><br><span class="line">sc2.selectionIndicatorHeight = 4.0</span><br><span class="line">sc2.backgroundsColor = UIColor.clear</span><br><span class="line">sc2.selectionIndicatorLocation = .Down</span><br><span class="line">sc2.selectionStyle = .TextWidthStripe</span><br><span class="line">sc2.segmentWidthStyle = .Dynamic</span><br><span class="line">sc2.addTarget(self, action: #selector(segmentedControlChangedValue(segmentedControl:)), for: .valueChanged)</span><br><span class="line">view.addSubview(sc2)</span><br></pre></td></tr></table></figure>
+<h1 id="Demo④"><a href="#Demo④" class="headerlink" title="Demo④"></a>Demo④</h1><h4 id="Style4："><a href="#Style4：" class="headerlink" title="Style4："></a>Style4：</h4><p><img src="https://upload-images.jianshu.io/upload_images/3603263-f39cc2d901a72d8d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="ScreenShot4.png"></p>
+<p>Code:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">let sc3 = EasySegmentedControl.init(with: [&quot;one&quot;, &quot;Two&quot;, &quot;Three&quot;, &quot;4&quot;, &quot;Five&quot;])</span><br><span class="line">      sc3.frame = CGRect(x: 0, y: 180 + 68, width: viewWidth, height: 50)</span><br><span class="line">      sc3.indexChangeBlock = &#123; index in</span><br><span class="line">          print(&quot;Selected index \(index) (via block)&quot;)</span><br><span class="line">      &#125;</span><br><span class="line">      sc3.selectionIndicatorHeight = 4.0</span><br><span class="line">      sc3.backgroundsColor = UIColor(red: 0.1, green: 0.4, blue: 0.8, alpha: 1)</span><br><span class="line">      sc3.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]</span><br><span class="line">      sc3.selectionIndicatorColor = UIColor(red: 0.5, green: 0.8, blue: 1, alpha: 1)</span><br><span class="line">      sc3.selectionIndicatorBoxColor = UIColor.black</span><br><span class="line">      sc3.selectionIndicatorBoxOpacity = 1.0</span><br><span class="line">      sc3.selectionStyle = .Box</span><br><span class="line">      sc3.selectedSegmentIndex = NoSegment</span><br><span class="line">      sc3.selectionIndicatorLocation = .Down</span><br><span class="line">      sc3.shouldAnimateUserSelection = false</span><br><span class="line">      sc3.tag = 2</span><br><span class="line">      view.addSubview(sc3)</span><br></pre></td></tr></table></figure>
+<h1 id="Demo⑤"><a href="#Demo⑤" class="headerlink" title="Demo⑤"></a>Demo⑤</h1><h4 id="Style5："><a href="#Style5：" class="headerlink" title="Style5："></a>Style5：</h4><p><img src="https://upload-images.jianshu.io/upload_images/3603263-0b07727b687ec1ec.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="ScreenShot5.png"></p>
+<p>Code:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">lazy var scrollView: UIScrollView = &#123;</span><br><span class="line">    let s = UIScrollView.init(frame: CGRect(x: 0, y: 310 + 68, width: view.frame.size.width, height: 210))</span><br><span class="line">    s.backgroundColor = UIColor(red: 0.7, green: 0.7, blue: 0.7, alpha: 1)</span><br><span class="line">    s.isPagingEnabled = true</span><br><span class="line">    s.showsHorizontalScrollIndicator = false</span><br><span class="line">    s.contentSize = CGSize(width: view.frame.size.width * 3, height: 200)</span><br><span class="line">    s.delegate = self</span><br><span class="line">    s.scrollRectToVisible(CGRect(x: view.frame.size.width, y: 0, width: view.frame.size.width, height: 200), animated: false)</span><br><span class="line">    return s</span><br><span class="line">&#125;()</span><br><span class="line"></span><br><span class="line">override func viewDidLoad() &#123;</span><br><span class="line">    super.viewDidLoad()</span><br><span class="line"></span><br><span class="line">   let sc4 = EasySegmentedControl.init(frame: CGRect(x: 0, y: 260 + 68, width: view.frame.size.width, height: 50))</span><br><span class="line">    sc4.sectionTitles = [&quot;Worldwide&quot;, &quot;Local&quot;, &quot;Headlines&quot;]</span><br><span class="line">    sc4.selectedSegmentIndex = 1</span><br><span class="line">    sc4.backgroundColor = UIColor(red: 0.7, green: 0.7, blue: 0.7, alpha: 1)</span><br><span class="line">    sc4.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]</span><br><span class="line">    sc4.selectedTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(red: 0.1, green: 0.1, blue: 0.1, alpha: 1)]</span><br><span class="line">    sc4.selectionIndicatorColor = UIColor(red: 0.3, green: 0.3, blue: 0.3, alpha: 1)</span><br><span class="line">    sc4.selectionStyle = .Box;</span><br><span class="line">    sc4.selectionIndicatorLocation = .Up;</span><br><span class="line">    sc4.tag = 3;</span><br><span class="line">    sc4.indexChangeBlock = &#123;[weak self] index in</span><br><span class="line">        if let strongSelf = self &#123;</span><br><span class="line">            strongSelf.scrollView.scrollRectToVisible(CGRect(x: viewWidth * CGFloat(index), y: 0, width: viewWidth, height: 200), animated: true)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    view.addSubview(sc4)</span><br><span class="line"></span><br><span class="line">   let lable1 = UILabel.init(frame: CGRect(x: 0, y: 0, width: viewWidth, height: 210))</span><br><span class="line">    setApperanceFor(label: lable1)</span><br><span class="line">    lable1.text = &quot;Worldwide&quot;</span><br><span class="line">    scrollView.addSubview(lable1)</span><br><span class="line">    </span><br><span class="line">    let lable2 = UILabel.init(frame: CGRect(x: viewWidth, y: 0, width: viewWidth, height: 210))</span><br><span class="line">    setApperanceFor(label: lable2)</span><br><span class="line">    lable2.text = &quot;Local&quot;</span><br><span class="line">    scrollView.addSubview(lable2)</span><br><span class="line">    </span><br><span class="line">    let lable3 = UILabel.init(frame: CGRect(x: viewWidth * 2, y: 0, width: viewWidth, height: 210))</span><br><span class="line">    setApperanceFor(label: lable3)</span><br><span class="line">    lable3.text = &quot;Headlines&quot;</span><br><span class="line">    scrollView.addSubview(lable3)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) &#123;</span><br><span class="line">    let pageWidth = scrollView.frame.size.width</span><br><span class="line">    let page = Int(scrollView.contentOffset.x / pageWidth)</span><br><span class="line">    sc4.setSelectedSegment(index: page, animated: true)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>您可根据自己的需要，调整参数达到UI设计的样式规范。</p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src>
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        <li title="0" data-url="http://link.hhtjim.com/163/5146554.mp3"></li>
+                    
+                        <li title="1" data-url="http://link.hhtjim.com/qq/001faIUs4M2zna.mp3"></li>
+                    
+                </ul>
+            
+        </div>
+        
+    <div id="gitalk-container" class="comment link" data-ae="false" data-ci data-cs data-r data-o data-a data-d="false">查看评论</div>
+
+
+    </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/diaspora.js"></script>
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+</html>
