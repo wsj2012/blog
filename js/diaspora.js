@@ -482,7 +482,6 @@ $(function() {
                   distractionFreeMode: comment.data('d')
                 })
                 $(".comment").removeClass("link")
-                gitalk.render('gitalk-container')
                 Diaspora.loaded();
                 return false;
                 break;
