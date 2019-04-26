@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>App启动速度篇</title>
+      <link href="/blog/article/App%E5%90%AF%E5%8A%A8%E9%80%9F%E5%BA%A6%E7%AF%87/"/>
+      <url>/blog/article/App%E5%90%AF%E5%8A%A8%E9%80%9F%E5%BA%A6%E7%AF%87/</url>
+      
+        <content type="html"><![CDATA[<h3 id="1、App启动都做了哪些事儿？"><a href="#1、App启动都做了哪些事儿？" class="headerlink" title="1、App启动都做了哪些事儿？"></a>1、App启动都做了哪些事儿？</h3><ul><li>冷启动(启动前App进程不在系统里，需要系统新创建一个进程分配给它，这是一个完成的启动过程)</li><li>热启动(App进程在系统中，用户重新启动进入App的过程)</li></ul><blockquote><p>用户感知到启动慢，其实都发生在主线程上，而主线程慢的原因很多，如在主线程上执行了大文件的读写操作、在渲染周期中执行了大量计算等。。。</p></blockquote><h3 id="2、启动阶段"><a href="#2、启动阶段" class="headerlink" title="2、启动阶段"></a>2、启动阶段</h3><ul><li><p>main()函数执行前；</p><p>优化：</p><p>1️⃣、减少动态库加载；</p><p>2️⃣、减少加载启动后不会去使用的类或者方法；</p><p>3️⃣、+loadn()方法里的内容可以放到首屏渲染完成后再执行，或者使用+initialize()方法替换掉</p><p>注：在一个+load()方法里，进行运行时替换操作带来4ms的消耗，文件越多，对启动速度的影响就越大。</p></li><li><p>main()函数执行后；</p></li></ul><ul><li>首屏渲染完成后。</li></ul><h3 id="3、启动优化"><a href="#3、启动优化" class="headerlink" title="3、启动优化"></a>3、启动优化</h3><ul><li><p>功能级别的启动优化（main()函数执行后阶段）</p><p>思路：main()函数执行后到首屏渲染完成只处理首屏相关的业务，其他非首屏业务的初始化、监听、配置文件读取等都放到首屏渲染完成后去做。</p></li><li><p>方法级别的启动优化</p><p>思路：检查首屏渲染完成前有哪些耗时的方法、将没必要的耗时方法滞后或异步执行(重点检查执行实现加载、编辑、存储图片和文件等资源的方法)</p></li></ul><h3 id="4、监控手段"><a href="#4、监控手段" class="headerlink" title="4、监控手段"></a>4、监控手段</h3><ul><li><p>定时抓取主线程上的方法调用堆栈，计算一段时间里各个方法的耗时(Time  Profiler)</p></li><li><p>对obj_msgSend方法进行hook来掌握所有方法的耗时。(fishhook)</p><p>注：FaceBook开源库<a href="https://github.com/facebook/fishhook" target="_blank" rel="noopener">fishhook</a>，可在iOS上运行的Mach-O二进制文件中动态地重新绑定符号。</p></li></ul>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> iOS </tag>
+            
+            <tag> 启动 </tag>
+            
+            <tag> 速度 </tag>
+            
+            <tag> App </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Flutter 纯iOS风格UI框架搭建</title>
       <link href="/blog/article/Flutter%20iOS%E9%A3%8E%E6%A0%BCUI%E6%A1%86%E6%9E%B6%E6%90%AD%E5%BB%BA/"/>
       <url>/blog/article/Flutter%20iOS%E9%A3%8E%E6%A0%BCUI%E6%A1%86%E6%9E%B6%E6%90%AD%E5%BB%BA/</url>
@@ -14,11 +39,11 @@
       
         <tags>
             
-            <tag> UI </tag>
-            
             <tag> iOS </tag>
             
             <tag> App </tag>
+            
+            <tag> UI </tag>
             
             <tag> Flutter </tag>
             
@@ -87,13 +112,13 @@
       
         <tags>
             
-            <tag> Swift </tag>
-            
-            <tag> UI </tag>
-            
             <tag> iOS </tag>
             
             <tag> App </tag>
+            
+            <tag> Swift </tag>
+            
+            <tag> UI </tag>
             
         </tags>
       
@@ -112,11 +137,11 @@
       
         <tags>
             
-            <tag> UI </tag>
-            
             <tag> iOS </tag>
             
             <tag> App </tag>
+            
+            <tag> UI </tag>
             
             <tag> OC </tag>
             
